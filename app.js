@@ -1,63 +1,76 @@
-// function Header() {
-//     return (
-//         <header>
-//             <h1>Scoreboard</h1>
-//             <span className="stats">Players: 1</span>
-//         </header >
-//     );
-// }
+const players = [
+    {
+        name: "Anne",
+        score: 50
+    },
+    {
+        name: "Shaun",
+        score: 85
+    },
+    {
+        name: "Max",
+        score: 95
+    },
+    {
+        name: "Cats",
+        score: 80
+    }
+];
 
-// const Header = () => (
-//     <header>
-//         <h1>Scoreboard</h1>
-//         <span className="stats">Players: 1</span>
-//     </header >
-// );
-
-// ^ these both are the same as below
-
-const Header = () => {
+const Header = (props) => {
     return (
         <header>
-            <h1>Scoreboard</h1>
-            <span className="stats">Players: 1</span>
+            <h1>{props.title}</h1>
+            <span className="stats">Players: {props.totalPlayers}</span>
         </header >
     )
 };
 
-const Player = () => {
+const Player = (props) => {
     return (
         <div className="player">
             <span className="player-name">
-                Anne
+                {props.name}
             </span>
 
-            <Counter />
+            <Counter
+                score={props.score}
+            />
         </div>
     )
 }
 
-const Counter = () => {
+const Counter = (props) => {
     return (
         <div className="counter">
             <button className="counter-action decrement"> - </button>
-            <span className="counter-score"> 35 </span>
+            <span className="counter-score"> {props.score} </span>
             <button className="counter-action increment"> + </button>
         </div>
     )
 }
 
-const App = () => {
+const App = (props) => {
     return (
         <div className="scoreboard">
-            <Header />
-            <Player />
+            <Header
+                title="Scoreboard"
+                totalPlayers={props.initialPlayers.length}
+            />
+            {props.initialPlayers.map((player, index) => {
+                return < Player
+                    key={index.toString()}
+                    name={player.name}
+                    score={player.score}
+                />
+            })}
+
         </div>
     )
 }
 
 
 ReactDOM.render(
-    <App />,
+    <App initialPlayers={players} />,
     document.getElementById('root')
 );
