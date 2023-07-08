@@ -27,7 +27,8 @@ const App = () => {
         }
     ]);
 
-    const [nextPlayerId, setNextPlayerId] = React.useState(5);
+    // store data but don't rerender
+    const nextPlayerId = React.useRef(5);
 
     const handleAddPlayer = (name) => {
         setPlayers(prevPlayers => [
@@ -35,11 +36,11 @@ const App = () => {
             {
                 name,
                 score: 0,
-                id: nextPlayerId
+                id: nextPlayerId.current
             }
         ]);
 
-        setNextPlayerId(prevId => prevId + 1);
+        nextPlayerId.current += 1
     }
 
     const handleRemovePlayer = (id) => {
