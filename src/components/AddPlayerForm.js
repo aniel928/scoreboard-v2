@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 const AddPlayerForm = ({ addPlayer }) => {
     const playerInput = useRef(); // b/c we don't need state (uncontrolled)
@@ -22,6 +23,10 @@ const AddPlayerForm = ({ addPlayer }) => {
             />
         </form>
     )
+}
+
+AddPlayerForm.propTypes = {
+    addPlayer: PropTypes.func.isRequired,
 }
 
 export default AddPlayerForm;

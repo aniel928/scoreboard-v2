@@ -28,7 +28,13 @@ const App = () => {
     ]);
 
     // store data but don't rerender
+    const [highScore, setHighScore] = React.useState();
     const nextPlayerId = React.useRef(5);
+
+    React.useEffect(() => {
+        const scores = players.map(player => player.score);
+        setHighScore(Math.max(...scores));
+    }, [players]);
 
     const handleAddPlayer = (name) => {
         setPlayers(prevPlayers => [
@@ -72,6 +78,7 @@ const App = () => {
             {players.map(player =>
                 <Player
                     id={player.id}
+                    isHighScore={player.score === highScore && highScore !== 0}
                     key={player.id.toString()}
                     name={player.name}
                     removePlayer={handleRemovePlayer}
