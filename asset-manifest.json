@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/scoreboard-v2/static/css/main.a0b44281.css",
+    "main.js": "/scoreboard-v2/static/js/main.afc7bb4c.js",
+    "index.html": "/scoreboard-v2/index.html",
+    "main.a0b44281.css.map": "/scoreboard-v2/static/css/main.a0b44281.css.map",
+    "main.afc7bb4c.js.map": "/scoreboard-v2/static/js/main.afc7bb4c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a0b44281.css",
+    "static/js/main.afc7bb4c.js"
+  ]
+}
